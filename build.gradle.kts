@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.3.21"
+    kotlin("plugin.serialization") version "2.3.21"
     application
 }
 
@@ -11,6 +12,7 @@ repositories {
 }
 
 val ktorVersion = "3.5.0"
+val orgJsonVersion = "20260522"
 
 dependencies {
     testImplementation(kotlin("test"))
@@ -37,6 +39,9 @@ dependencies {
     // ---- Apache POI (XSSF = .xlsx writer, supports embedding images) ----
     implementation("org.apache.poi:poi:5.5.1")
     implementation("org.apache.poi:poi-ooxml:5.5.1")
+
+    // ---- JSON
+    implementation("org.json:json:$orgJsonVersion")
 
     testImplementation(kotlin("test"))
 }

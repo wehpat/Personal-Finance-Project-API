@@ -5,10 +5,11 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.calllogging.CallLogging
 import io.ktor.server.plugins.contentnegotiation.*
-import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.slf4j.event.Level
+import routes.healthRoute
+import routes.rootRoutes
 
 class App {
     companion object {
@@ -44,11 +45,7 @@ fun Application.module() {
     }
 
     routing {
-        get("/") {
-            call.respondText("Server is running at ${App.port}")
-        }
-        get("/health") {
-            call.respond(mapOf("status" to "ok"))
-        }
+        rootRoutes()
+        healthRoute()
     }
 }
