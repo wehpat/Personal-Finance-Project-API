@@ -31,10 +31,10 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.53.2.0")
 
     // Optional but common with Ktor + SQLite: a lightweight SQL layer
-    // (skip if you're writing raw JDBC yourself)
     implementation("org.jetbrains.exposed:exposed-core:0.61.0")
     implementation("org.jetbrains.exposed:exposed-dao:0.61.0")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.61.0")
+    implementation("org.jetbrains.exposed:exposed-java-time:0.55.0")
 
     // ---- Apache POI (XSSF = .xlsx writer, supports embedding images) ----
     implementation("org.apache.poi:poi:5.5.1")

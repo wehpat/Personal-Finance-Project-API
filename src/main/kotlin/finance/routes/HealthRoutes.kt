@@ -1,11 +1,11 @@
-package routes
+package finance.routes
 
+import finance.utility.Logger
 import kotlinx.serialization.Serializable
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.json.JSONObject
-import utility.Logger
 
 @Serializable
 data class HealthCheckRequest(

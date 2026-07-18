@@ -51,3 +51,10 @@ bin/
 .env.production
 .env.development
 .env.test
+
+### Database ###
+data/
+*.db
+*.db-journal
+*.db-shm
+*.db-wal

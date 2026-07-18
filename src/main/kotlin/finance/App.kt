@@ -1,3 +1,6 @@
+package finance
+
+import finance.database.DatabaseFactory
 import io.github.cdimascio.dotenv.dotenv
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -8,26 +11,26 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.slf4j.event.Level
-import routes.healthRoute
-import routes.rootRoutes
+import finance.routes.healthRoute
+import finance.routes.rootRoutes
 
 class App {
     companion object {
         val dotenv = dotenv {
             ignoreIfMissing = true
         }
+
         val port = dotenv["APP_PORT"]?.toIntOrNull() ?: 8080
 
         @JvmStatic
         fun main(args: Array<String>) {
             // e.g. initialize SQLite connection/tables here before starting the server
+
             // Database.connect("jdbc:sqlite:app.db", driver = "org.sqlite.JDBC")
+            DatabaseFactory().init()
 
-            embeddedServer(Netty, port = port, host = "0.0.0.0") {
-                module()
-            }.start(wait = true)
-
-
+            embeddedServer(Netty, port = port, module = Application::module)
+                .start(wait = true)
         }
     }
 }
