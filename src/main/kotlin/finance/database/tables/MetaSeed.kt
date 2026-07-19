@@ -2,9 +2,10 @@ package finance.database.tables
 
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.datetime
+import java.util.UUID
 
 object MetaSeed : Table("meta_seed") {
-    val id = integer("id").autoIncrement()
+    val id = varchar("id", 46).clientDefault { "mtd_${UUID.randomUUID()}" }
     val label = varchar("label", 255)
     // "group" is a reserved SQL keyword — using group_name as the actual
     // column name avoids escaping headaches, but the Kotlin property below
